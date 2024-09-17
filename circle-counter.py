@@ -13,7 +13,7 @@ def detect_circles(image, min_distance=20):
 def detect_lines(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(gray, 50, 150, apertureSize=3)
-    lines = cv2.HoughLines(edges, 1, np.pi/180, 200)
+    lines = cv2.HoughLinesP(edges, 1, np.pi/180, threshold=100, minLineLength=100, maxLineGap=10)
     return lines
 
 def find_nearest_line(circles, lines):
@@ -25,19 +25,13 @@ def find_nearest_line(circles, lines):
     nearest_line = None
 
     for line in lines:
-        rho, theta = line[0]
-        a = np.cos(theta)
-        b = np.sin(theta)
-        x0, y0 = a * rho, b * rho
-        x1, y1 = int(x0 + 1000 * (-b)), int(y0 + 1000 * (a))
-        x2, y2 = int(x0 - 1000 * (-b)), int(y0 - 1000 * (a))
-        
+        x1, y1, x2, y2 = line[0]
         distances = np.abs((y2-y1)*circle_centers[:,0] - (x2-x1)*circle_centers[:,1] + x2*y1 - y2*x1) / np.sqrt((y2-y1)**2 + (x2-x1)**2)
         avg_distance = np.mean(distances)
         
         if avg_distance < min_distance:
             min_distance = avg_distance
-            nearest_line = (rho, theta)
+            nearest_line = (x1, y1, x2, y2)
 
     return nearest_line
 
@@ -45,8 +39,8 @@ def rotate_image(image, line):
     if line is None:
         return image, 0
 
-    rho, theta = line
-    angle = np.degrees(theta) - 90
+    x1, y1, x2, y2 = line
+    angle = np.degrees(np.arctan2(y2 - y1, x2 - x1))
     if angle < -45:
         angle += 180
 
