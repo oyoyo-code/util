@@ -13,9 +13,9 @@ def filter_circles(circles, tolerance=3, radius_threshold=0.2):
         return []
 
     # NumPy配列に変換
-    circles_array = np.array(circles)
-    centers = circles_array[:, 0]
-    radii = circles_array[:, 1]
+    circles_array = np.array(circles, dtype=object)
+    centers = np.array([circle[0] for circle in circles_array])
+    radii = np.array([circle[1] for circle in circles_array])
 
     # 全体の半径の平均を計算
     mean_radius = np.mean(radii)
@@ -28,7 +28,7 @@ def filter_circles(circles, tolerance=3, radius_threshold=0.2):
             continue
 
         # 同一中心座標を持つ円のインデックスを取得
-        distances = np.linalg.norm(centers - center, axis=1)
+        distances = np.linalg.norm(centers - np.array(center), axis=1)
         similar_indices = np.where(distances <= tolerance)[0]
 
         # 同一中心座標を持つ円の中から、平均半径に最も近い円を選択
