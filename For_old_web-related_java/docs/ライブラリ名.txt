@@ -1,0 +1,11 @@
+https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
+Java SE Development Kit 8u202
+Windows x86
+jdk-8u202-windows-i586.exe
+
+
+
+https://www.oracle.com/database/technologies/xe-prior-release-downloads.html
+Oracle Database Express Edition (XE) Release 11.2.0.2.0 (11gR2).
+Oracle Database 11gR2 Express Edition for Windows x32
+OracleXE112_Win32.zip
