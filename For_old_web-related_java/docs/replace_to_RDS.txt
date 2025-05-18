@@ -1,0 +1,12 @@
+[Oracle]
+https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/migration-oracle-database/best-practices.html
+https://qiita.com/kenichi_matsunaga/items/fd5247f6c839ce19c097
+https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/patterns/migrate-an-on-premises-oracle-database-to-amazon-rds-for-oracle.html
+https://xp-cloud.jp/blog/2019/04/11/4763/
+https://repost.aws/ja/knowledge-center/rds-oracle-migrate-data
+https://qiita.com/pythontjlc/items/32f4240bb6cf7d0f61ea
+
+[SQL Server]
+https://qiita.com/hobbypro/items/520e426360ecb9260f1c
+https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/patterns/migrate-an-on-premises-microsoft-sql-server-database-to-amazon-rds-for-sql-server.html
+https://repost.aws/ja/knowledge-center/rds-sql-server-migrate-databases-to
